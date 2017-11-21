@@ -34,6 +34,15 @@ Rails.application.routes.draw do
 ...
 end
 ```
+### Add before_action to enable recording activities
+In case you want to enable to all controller in your application, you can add code to ApplicationController.
+```ruby
+class ApplicationController < ActionController::Base
+...
+	before_action :log_user_activity
+...
+end
+```
 
 ## Contributing
 Contribution directions go here.
