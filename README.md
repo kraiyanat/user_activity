@@ -1,8 +1,8 @@
 # UserActivity
-Short description and motivation.
+The GDPR is forcing to use in mid of year 2017, I wanna have the tool out of the box to record the personal data accessing that can have some activity configuration.  
 
 ## Usage
-How to use my plugin.
+User activity gem is a rails engine mountable gem working with "rails" and "rails admin". It's record all controller and action that user use into the database table itself.   
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -19,6 +19,11 @@ $ bundle
 Or install it yourself as:
 ```bash
 $ gem install user_activity
+```
+
+### Generate database table.
+```bash
+$ rails user_activity:install:migrations
 ```
 
 ## Contributing
