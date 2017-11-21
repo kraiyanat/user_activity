@@ -38,5 +38,4 @@ end
 
 ActiveSupport.on_load(:action_controller) do 
   include UserActivity
-  before_action :log_user_activity
 end
