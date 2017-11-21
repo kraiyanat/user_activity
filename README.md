@@ -21,9 +21,18 @@ Or install it yourself as:
 $ gem install user_activity
 ```
 
-### Generate database table.
+### Generate database table:
 ```bash
 $ rails user_activity:install:migrations
+```
+
+### Mount route to application:
+```ruby
+Rails.application.routes.draw do
+...
+	mount RailsAdmin::Engine => '/user_activity', as: 'user_activity'
+...
+end
 ```
 
 ## Contributing
