@@ -34,12 +34,29 @@ Rails.application.routes.draw do
 ...
 end
 ```
+
+
+##Configuration
+It is posible to config some data in this gem, to do that you can follow the example below:
+
 ### Add before_action to enable recording activities
 In case you want to enable to all controller in your application, you can add code to ApplicationController.
 ```ruby
 class ApplicationController < ActionController::Base
 ...
 	before_action :log_user_activity
+...
+end
+```
+
+### To provide user name and user id you need to override controller method "user_for_user_activity"
+Example in case using Devise
+```ruby
+class ApplicationController < ActionController::Base
+...
+	def user_for_user_activity
+  	Struct.new(:name, :id).new(current_user.email, current_user.id)
+  end
 ...
 end
 ```
