@@ -25,6 +25,10 @@ $ gem install user_activity
 ```bash
 $ rails user_activity:install:migrations
 ```
+And then execute:
+```bash
+$ rake db:migrate
+```
 
 ### Mount route to application:
 ```ruby
@@ -34,7 +38,11 @@ Rails.application.routes.draw do
 ...
 end
 ```
-
+### Install initializer files by command below: 
+### Generate database table:
+```bash
+$ rails generate installer user_activity
+```
 
 ##Configuration
 It is posible to config some data in this gem, to do that you can follow the example below:
