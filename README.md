@@ -39,10 +39,7 @@ Rails.application.routes.draw do
 end
 ```
 ### Install initializer files by command below: 
-### Generate database table:
-```bash
-$ rails generate installer user_activity
-```
+In order to make the gem work, there is a few think to do following below. 
 
 ##Configuration
 It is posible to config some data in this gem, to do that you can follow the example below:
