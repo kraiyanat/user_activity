@@ -56,7 +56,7 @@ end
 ```
 
 ### To provide user name and user id you need to override controller method "user_for_user_activity"
-Example in case using Devise
+Override the method name 'user_for_user_activity'in controller which is return object of Struct with attribures 'name' and 'id'. For example in case using Devise.
 ```ruby
 class ApplicationController < ActionController::Base
 ...
