@@ -29,7 +29,7 @@ module UserActivity
 
   def activity_for_user_activity(controller, method)
     begin 
-      configuration.activity_define[controller][method]
+      UserActivity.configuration.activity_define[controller.to_s][method.to_s]
     rescue
       ""
     end
