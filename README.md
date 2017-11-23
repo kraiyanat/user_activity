@@ -9,6 +9,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'user_activity'
+gem 'rails_admin', '~> 1.2 #the dependency gem
 ```
 
 And then execute:
@@ -60,8 +61,8 @@ Example in case using Devise
 class ApplicationController < ActionController::Base
 ...
 	def user_for_user_activity
-  	Struct.new(:name, :id).new(current_user.email, current_user.id)
-  end
+  		Struct.new(:name, :id).new(current_user.email, current_user.id)
+	end
 ...
 end
 ```
