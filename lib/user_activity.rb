@@ -2,19 +2,37 @@ require "active_support"
 require "user_activity/engine"
 
 module UserActivity
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configure
+    self.configuration ||= Configuration.new
+    yield(configuration)
+  end
+
+  class Configuration
+    attr_accessor :activity_define
+
+    def initialize
+      @activity_define =  {}
+    end
+  end
+
   def tee_method
   	"Kraiyanat"
   end
 
   def user_for_user_activity
-  	@current_user || Struct.new(:name, :id).new("anonymus", "")
+  	Struct.new(:name, :id).new("anonymus", "")
   end
 
   def activity_for_user_activity(controller, method)
-    activity_hash = {}
-    activity_hash[["aa", "bb"]] = "cc"
-
-    activity_hash[[controller.to_s, method.to_s]].to_s
+    begin 
+      UserActivity.configuration.activity_define[controller.to_s][method.to_s]
+    rescue
+      ""
+    end
   end
 
   def log_user_activity
@@ -23,7 +41,7 @@ module UserActivity
   													user_name: user_for_user_activity.name,
   													action: params[:action],
   													controller: params[:controller],
-  													activity: activity_for_user_activity("aa", "bb"),
+  													activity: activity_for_user_activity(params[:controller], params[:action]),
   													http_request: "#{request.method} #{request.url} #{request.params}"
   												)
   end
@@ -38,5 +56,4 @@ end
 
 ActiveSupport.on_load(:action_controller) do 
   include UserActivity
-  before_action :log_user_activity
 end
