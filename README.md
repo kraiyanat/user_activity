@@ -67,6 +67,17 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+### Define activity name
+To define activity name and record to database, need to run the command below:
+```bash
+$ rails generate installer user_activity
+```
+That will create 2 files.
+- config/initializers/user_activity.rb
+- config/user_activity.yml
+
+First is config/initializer/user_activity.rb configuration file that load yml to configuration attribute, the second is  config/user_activity.yml this file store activity define and you can define the activity here.
+
 ## Contributing
 Contribution directions go here.
 
